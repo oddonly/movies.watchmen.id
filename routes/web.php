@@ -11,9 +11,11 @@
 |
 */
 
- Route::get('/', function () {
-    return view('/home');
-});
+Route::get('/', [
+	'uses' =>'HomeController@getHome',
+	'as' =>'home'
+]);
+
 Route::get ('password/lost','ForgotPasswordController@forgotPassword');
 
 Auth::routes();
@@ -30,3 +32,7 @@ Route::get ('main/logout', 'MainController@logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::any('{catchall}', function () {
+    return view('404');
+})->where('catchall', '.*');

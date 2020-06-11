@@ -25,4 +25,17 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function getHome()
+    {
+        $username = session('username');
+        if ($username != ""){
+            return redirect()->action('HomeController@index');
+        }
+        else{
+        $model = new Login;
+        
+        return view('login',compact('model'));
+        }
+    }
 }
