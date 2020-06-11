@@ -8,7 +8,7 @@
             <div class="col-xl-12">
                 <div class="cat__pages__login__block__promo text-white text-center">
                     <h2 class="mb-3">
-                        <strong>WELCOME TO EZEELIVE TECHNOLOGIES - ADMIN PANEL</strong>
+                        <strong>WELCOME TO WATCHMEN.ID MOVIES WEBSITE</strong>
                     </h2>
                 </div>
                 <div class="cat__pages__login__block__inner">
