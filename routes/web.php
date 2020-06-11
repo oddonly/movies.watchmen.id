@@ -20,6 +20,8 @@ Route::get('login', function () {
     return view('login');
 });
 
+Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
+
 Route::get ('password/lost','ForgotPasswordController@forgotPassword')->middleware('auth');
 
 Auth::routes();
