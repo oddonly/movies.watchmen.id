@@ -16,6 +16,10 @@ Route::get('/', [
 	'as' =>'home'
 ]);
 
+ Route::get('login', function () {
+    return view('login');
+});
+
 Route::get ('password/lost','ForgotPasswordController@forgotPassword');
 
 Auth::routes();
