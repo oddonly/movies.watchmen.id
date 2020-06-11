@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movies;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $movie10 = Movies::all()->take(10);
+        return view('home',compact('movie10'));
     }
 
     public function getHome()
@@ -32,10 +34,8 @@ class HomeController extends Controller
         if ($username != ""){
             return redirect()->action('HomeController@index');
         }
-        else{
-        $model = new Login;
-        
-        return view('login',compact('model'));
+        else{        
+            return view('login');
         }
     }
 }

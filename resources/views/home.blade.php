@@ -15,6 +15,8 @@
                     @endif
                     {{ Auth::user()->email }}
                     You are logged in!
+                    Here is 10 movies:
+                    {{ $movie10 }}
                 </div>
             </div>
         </div>
