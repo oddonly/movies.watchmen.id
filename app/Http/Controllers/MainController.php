@@ -24,10 +24,10 @@ class MainController extends Controller
 				/*Session::put('adminSession',$data['email']);*/
 				  //$research = DB::table('users')->where('user_id', Auth::id())->get();
 				 // echo $research; die;
-       			 return redirect('dashboard');
+       			 return redirect('home');
             }else{
                 //echo "failed"; die;
-               return redirect('/login')->with('error', 'Invailed Username and Password');
+               return redirect('/login')->with('error', 'Invalid Username and Password');
             }
         }
         return view('/login');
