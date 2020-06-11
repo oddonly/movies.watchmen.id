@@ -40,9 +40,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="cat__footer__company">
-                    <img class="cat__footer__company-logo" src="{!! asset('/dist/modules/dummy-assets/common/img/mediatec.png') !!}" target="_blank" title="Ezeelive">
+                    <img class="cat__footer__company-logo" src="{!! asset('/dist/modules/dummy-assets/common/img/mediatec.png') !!}" target="_blank" title="WatchmenID">
                     <span>
-                        &copy; <?php echo date("Y");?> <a href="https://ezeelive.com/" target="_blank">Ezeelive Technologies &amp; Company</a>
+                        &copy; <?php echo date("Y");?> <a href="https://watchmen.id/" target="_blank">Watchmen ID</a>
                         <br>
                         All rights reserved
                     </span>

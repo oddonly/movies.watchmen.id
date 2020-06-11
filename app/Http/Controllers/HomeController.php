@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $movie10 = Movies::all()->take(10);
+        $movie10 = Movies::where('id','!=','null')->limit(10)->get();
         return view('home',compact('movie10'));
     }
 
