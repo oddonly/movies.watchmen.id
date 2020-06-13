@@ -3,9 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel-body">
-                <h3 align="center">Live search in laravel using AJAX</h3><br />
                 <div class="panel panel-default">
                     <div class="panel-heading">Search Movies</div>
                     <div class="panel-body">
@@ -13,12 +12,10 @@
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Movie Title" />
                         </div>
                         <div class="table-responsive">
-                            <h3 align="center">Total Data: <span id="total_records"></span></h3>
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Movie Title</th>
-                                        <th>Popularity</th>
                                     </tr>
                                 </thead>
                                 <tbody>

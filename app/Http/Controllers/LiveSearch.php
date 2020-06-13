@@ -41,7 +41,6 @@ class LiveSearch extends Controller
         $output .= '
         <tr>
          <td>'.$row->original_title.'</td>
-         <td>'.$row->popularity.'</td>
         </tr>
         ';
        }
