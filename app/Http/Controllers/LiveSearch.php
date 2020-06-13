@@ -26,12 +26,13 @@ class LiveSearch extends Controller
          ->limit(50)
          ->get();
       }
-      // else
-      // {
-      //  $data = DB::table('movies')
-      //    ->orderBy('original_title', 'desc')
-      //    ->get();
-      // }
+      else
+      {
+        $data = {};
+       // $data = DB::table('movies')
+       //   ->orderBy('original_title', 'desc')
+       //   ->get();
+      }
       $total_row = $data->count();
       if($total_row > 0)
       {
