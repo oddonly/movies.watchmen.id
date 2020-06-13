@@ -8,9 +8,13 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Search Movies</div>
                     <div class="panel-body">
-                        <div class="form-group">
+                        <div class="form-group row">
+                          <div class="col-md-8">
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Movie Title" />
-                            <input type="button" name="searchbutton" id="searchbutton" class="form-control" placeholder="Search" />
+                          </div>
+                          <div class="col-md-4">
+                            <input type="button" name="searchbutton" id="searchbutton" class="form-control" placeholder="Search">Search</input>
+                          </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
@@ -44,8 +48,8 @@ $(document).ready(function(){
    dataType:'json',
    success:function(data)
    {
-    // $('tbody').html(data.table_data);
-    $('#total_records').text(data.total_data);
+    $('tbody').html(data.table_data);
+    // $('#total_records').text(data.total_data);
    }
   })
  }
@@ -56,15 +60,15 @@ $(document).ready(function(){
  // });
 
  $("#searchbutton").click( function(){
-             var query = $('#search').val();
+             var query = $("#search").val();
              fetch_customer_data(query);
  });
 
- $('#search').keypress(function (e) {
+ $("#search").keypress(function (e) {
  var key = e.which;
  if(key == 13)  // the enter key code
   {
-    var query = $(this).val();
+    var query = $("#search").val();
     fetch_customer_data(query);
   }
 });   
