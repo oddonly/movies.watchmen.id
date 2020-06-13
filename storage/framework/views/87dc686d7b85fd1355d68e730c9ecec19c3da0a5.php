@@ -1,29 +1,59 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8 col-md-offset-2">
             <div class="panel-body">
-                <h3 align="center">Live search in laravel using AJAX</h3><br />
                 <div class="panel panel-default">
-                    <div class="panel-heading">Search Movies</div>
+		    <div class="panel-heading">
+			<h3 style="text-align:center;width:100%;">Randomizer Aktor/Aktris Indonesia</h3>
+		    </div>
+		    <div class="panel-body">
+		      <div class="row">
+			<div class="col-md-12">
+			  <div style="width:100%; text-align:center;margin-bottom:20px;">
+			    <img id="aktor" style="text-align:center;width:160px;" src="/img/sinefil/random.png" />
+			  </div>
+			</div> 
+		      </div>
+		
+		      <div class="row">
+                        <div class="col-md-12">
+                          <div style="width:100%; text-align:center;margin-bottom:20px;">
+                            <span id="namaaktor"></span>
+                            <br/>
+                          </div>
+                        </div>
+                      </div>
+
+		      <div class="form-group row">
+			<div class="col-md-2 col-md-offset-5">
+			  <input type="button" class="form-control" id="randomizer" value="Random!" />
+			</div>
+		      </div>
+		    </div>
+                    <!--<div class="panel-heading">Search Movies</div>
                     <div class="panel-body">
-                        <div class="form-group">
+                        <div class="form-group row">
+                          <div class="col-md-8">
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Movie Title" />
+                          </div>
+                          <div class="col-md-4">
+                            <input type="button" name="searchbutton" id="searchbutton" class="form-control" value="Search" />
+                          </div>
                         </div>
                         <div class="table-responsive">
-                            <h3 align="center">Total Data: <span id="total_records"></span></h3>
-                            <table class="table table-striped table-bordered">
+                            <table id="movielist" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Movie Title</th>
-                                        <th>Popularity</th>
+                                        <th class="col-md-8">Movie Title</th>
+                                        <th class="col-md-4">Language</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
                             </table>
                         </div>
-                    </div>    
+                    </div>    -->
                 </div>
 	    </div>
         </div>
@@ -32,6 +62,8 @@
 
 <script>
 $(document).ready(function(){
+ 
+ $('#namaaktor').text("Siapa yaa~");
 
  fetch_customer_data();
 
@@ -45,15 +77,68 @@ $(document).ready(function(){
    success:function(data)
    {
     $('tbody').html(data.table_data);
-    $('#total_records').text(data.total_data);
+    // $('#total_records').text(data.total_data);
    }
   })
  }
 
- $(document).on('keyup', '#search', function(){
-  var query = $(this).val();
-  fetch_customer_data(query);
+ var query = $("#search").val();
+
+ var table = $('#movielist').DataTable({
+        ajax: {
+	    url: '<?php echo route('live_search.action'); ?>',
+	    type: 'GET',
+	    data:{query:query},
+	    dataType:'json'
+	},
+        'processing': true,
+        'language': {
+            'loadingRecords': '&nbsp;',
+            'processing': '<div class="spinner"></div>'
+        }                
+    });
+
+ // $(document).on('keyup', '#search', function(){
+ //  var query = $(this).val();
+ //  fetch_customer_data(query);
+ // });
+
+ $("#searchbutton").click( function(){
+             //var query = $("#search").val();
+             fetch_customer_data(query);
  });
+
+ $("#randomizer").click( function(){
+             //var query = $("#search").val();
+	if($("#randomizer").val() == "Random!") {
+		$("#aktor").prop('src','/img/sinefil/sinefil.gif');
+		$('#namaaktor').text("Acak-acak...");
+		$("#randomizer").prop('value','Stop!');
+	}
+	else {
+		$.ajax({
+		   url:"<?php echo e(route('aktor.random')); ?>",
+		   method:'GET',
+   		   dataType:'json',
+		   success:function(data)
+		   {
+		    $('#namaaktor').text(data.name);
+		    $("#aktor").prop('src','/img/sinefil/'+data.id+'.jpg');
+		    // $('#total_records').text(data.total_data);
+  		   }
+		});
+		$("#randomizer").prop('value','Random!');
+	}
+ });
+
+ $("#search").keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    //var query = $("#search").val();
+    fetch_customer_data(query);
+  }
+});   
 });
 </script>
 <?php $__env->stopSection(); ?>

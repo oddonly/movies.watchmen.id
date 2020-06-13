@@ -21,7 +21,8 @@ Route::get('login', function () {
 });
 
 Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
-
+Route::get('/live_search2/action', 'LiveSearch@action2')->name('live_search.action2');
+Route::get('/aktor/random', 'LiveSearch@aktorrandom')->name('aktor.random');
 Route::get ('password/lost','ForgotPasswordController@forgotPassword')->middleware('auth');
 
 Auth::routes();
