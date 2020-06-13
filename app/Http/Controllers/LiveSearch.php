@@ -20,19 +20,18 @@ class LiveSearch extends Controller
       $query = $request->get('query');
       if($query != '')
       {
-       $data = DB::table('movies')
+         $data = DB::table('movies')
          ->where('original_title', 'like', '%'.$query.'%')
-	 ->orderBy('original_title', 'desc')
-         ->limit(100)
-         ->get();
-         
-      }
-      else
-      {
-       $data = DB::table('movies')
-         ->orderBy('original_title', 'desc')
+	       ->orderBy('original_title', 'desc')
+         ->limit(50)
          ->get();
       }
+      // else
+      // {
+      //  $data = DB::table('movies')
+      //    ->orderBy('original_title', 'desc')
+      //    ->get();
+      // }
       $total_row = $data->count();
       if($total_row > 0)
       {
@@ -40,7 +39,8 @@ class LiveSearch extends Controller
        {
         $output .= '
         <tr>
-         <td>'.$row->original_title.'</td>
+         <td class="col-md-8">'.$row->original_title.'</td>
+         <td class="col-md-4">'.$row->original_language.'</td>
         </tr>
         ';
        }

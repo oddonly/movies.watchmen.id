@@ -13,14 +13,15 @@
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Movie Title" />
                           </div>
                           <div class="col-md-4">
-                            <input type="button" name="searchbutton" id="searchbutton" class="form-control" placeholder="Search">Search</input>
+                            <input type="button" name="searchbutton" id="searchbutton" class="form-control" value="Search" />
                           </div>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Movie Title</th>
+                                        <th class="col-md-8">Movie Title</th>
+                                        <th class="col-md-4">Language</th>
                                     </tr>
                                 </thead>
                                 <tbody>
