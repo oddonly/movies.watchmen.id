@@ -37,10 +37,13 @@ class LiveSearch extends Controller
       {
        foreach($data as $row)
        {
+        $response = file_get_contents('https://api.themoviedb.org/3/movie/'$row->id'?api_key=5ceae4569433f08a9592db47e9ffd1cf');
+        $response = json_decode($response);
+        
         $output .= '
         <tr>
          <td class="col-md-8">'.$row->original_title.'</td>
-         <td class="col-md-4">'.$row->original_language.'</td>
+         <td class="col-md-4">'.$response->original_language.'</td>
         </tr>
         ';
        }
