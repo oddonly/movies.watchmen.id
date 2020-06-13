@@ -28,7 +28,7 @@ class LiveSearch extends Controller
       }
       else
       {
-        $data = "{}";
+        $data = json_decode("{}");
        // $data = DB::table('movies')
        //   ->orderBy('original_title', 'desc')
        //   ->get();
