@@ -10,6 +10,7 @@
                     <div class="panel-body">
                         <div class="form-group">
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search Movie Title" />
+                            <input type="button" name="searchbutton" id="searchbutton" class="form-control" placeholder="Search" />
                         </div>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered">
@@ -43,16 +44,30 @@ $(document).ready(function(){
    dataType:'json',
    success:function(data)
    {
-    $('tbody').html(data.table_data);
+    // $('tbody').html(data.table_data);
     $('#total_records').text(data.total_data);
    }
   })
  }
 
- $(document).on('keyup', '#search', function(){
-  var query = $(this).val();
-  fetch_customer_data(query);
+ // $(document).on('keyup', '#search', function(){
+ //  var query = $(this).val();
+ //  fetch_customer_data(query);
+ // });
+
+ $("#searchbutton").click( function(){
+             var query = $('#search').val();
+             fetch_customer_data(query);
  });
+
+ $('#search').keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    var query = $(this).val();
+    fetch_customer_data(query);
+  }
+});   
 });
 </script>
 @endsection
