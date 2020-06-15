@@ -11,7 +11,7 @@
 		      <div class="row">
 			<div class="col-md-12">
 			  <div style="width:100%; text-align:center;margin-bottom:20px;">
-			    <img id="aktor" style="text-align:center;width:160px;" src="/img/sinefil/random.png" />
+			    <img id="aktor" style="text-align:center;height:240px;" src="/img/sinefil/random.png" />
 			  </div>
 			</div> 
 		      </div>
@@ -27,7 +27,7 @@
 
 		      <div class="form-group row">
 			<div class="col-md-2 col-md-offset-5">
-			  <input type="button" class="form-control" id="randomizer" value="Random!" />
+			  <input type="button" class="form-control" style="background-color:green;color:white;" id="randomizer" value="Random!" />
 			</div>
 		      </div>
 		    </div>
@@ -109,11 +109,12 @@ $(document).ready(function(){
  });
 
  $("#randomizer").click( function(){
-             //var query = $("#search").val();
+
 	if($("#randomizer").val() == "Random!") {
-		$("#aktor").prop('src','/img/sinefil/sinefil.gif');
 		$('#namaaktor').text("Acak-acak...");
+		$("#aktor").prop('src','/img/sinefil/sinefil.gif');
 		$("#randomizer").prop('value','Stop!');
+		$("#randomizer").prop('style','background-color:red;color:white;');
 	}
 	else {
 		$.ajax({
@@ -122,12 +123,12 @@ $(document).ready(function(){
    		   dataType:'json',
 		   success:function(data)
 		   {
-		    $('#namaaktor').text(data.name);
 		    $("#aktor").prop('src','/img/sinefil/'+data.id+'.jpg');
-		    // $('#total_records').text(data.total_data);
+		    $('#namaaktor').text(data.name);
   		   }
 		});
 		$("#randomizer").prop('value','Random!');
+		$("#randomizer").prop('style','background-color:green;color:white;');
 	}
  });
 
